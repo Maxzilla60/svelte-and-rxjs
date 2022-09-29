@@ -6,7 +6,7 @@
 </script>
 
 <main>
-	<h1>A Look At Svelte</h1>
+	<h1>Svelte 🧡 RxJS</h1>
 	<h5>Maxime Orione - Renta</h5>
 
 	<PotatoCounter/>
