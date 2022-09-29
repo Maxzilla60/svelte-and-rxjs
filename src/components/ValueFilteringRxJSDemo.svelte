@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { Fruit, fruit$ } from '../services/fruitObservable';
+	import { fruit$ } from '../services/fruitObservable';
 	import BouncyFruit from './BouncyFruit.svelte';
 	import { filter, Observable } from 'rxjs';
+	import type { Fruit } from '../services/shared';
 
 	const bananaCount$: Observable<Fruit> = fruit$.pipe(
 		filter(event => event?.fruit === 'banana'),
