@@ -1,6 +1,8 @@
 <script lang="ts">
 	import SubscribeAndDerivedDemo from './components/SubscribeAndDerivedDemo.svelte';
 	import ValueFilteringDemo from './components/ValueFilteringDemo.svelte';
+	// import SubscribeAndDerivedRxJSDemo from './components/SubscribeAndDerivedRxJSDemo.svelte';
+	// import ValueFilteringRxJSDemo from './components/ValueFilteringRxJSDemo.svelte';
 </script>
 
 <main>
@@ -8,10 +10,12 @@
 	<h5>Maxime Orione - Renta</h5>
 
 	<SubscribeAndDerivedDemo/>
+	<!-- <SubscribeAndDerivedRxJSDemo/> -->
 
 	<p>---</p>
 
 	<ValueFilteringDemo/>
+	<!-- <ValueFilteringRxJSDemo/> -->
 </main>
 
 <style>
