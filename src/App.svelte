@@ -1,25 +1,8 @@
 <script lang="ts">
-	import { derived, Readable, Writable, writable } from 'svelte/store';
+	import { Writable, writable } from 'svelte/store';
 	import { fruit$ } from './services/fruitStore';
 	import BouncyFruit from './components/BouncyFruit.svelte';
-
-	let eventsLog = [];
-	fruit$.subscribe(event => eventsLog = [event, ...eventsLog]);
-
-	const fruitEmojiString$: Readable<string> = derived(fruit$, event => {
-		switch (event?.fruit) {
-			case 'banana':
-				return '🍌';
-			case 'kiwi':
-				return '🥝';
-			case 'tomato':
-				return '🍅';
-			default:
-				return '❓';
-		}
-	});
-
-	// ---
+	import SubscribeAndDerivedDemo from './components/SubscribeAndDerivedDemo.svelte';
 
 	const bananaCount$ = writable<number>(0);
 	const kiwiCount$ = writable<number>(0);
@@ -42,12 +25,7 @@
 	<h1>Svelte 🧡 RxJS</h1>
 	<h5>Maxime Orione - Renta</h5>
 
-	<div>{$fruitEmojiString$}</div>
-	<div id="event_log">
-		{#each eventsLog as event}
-			<div>{JSON.stringify(event)}</div>
-		{/each}
-	</div>
+	<SubscribeAndDerivedDemo/>
 
 	<p>---</p>
 
@@ -83,13 +61,6 @@
 	h5 {
 		margin-top: 0;
 		font-weight: normal;
-	}
-
-	#event_log {
-		padding-left: 15px;
-		height: 100px;
-		overflow-y: scroll;
-		font-size: small;
 	}
 
 	#bouncy_fruits {
