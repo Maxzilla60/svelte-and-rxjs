@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { derived, Readable } from 'svelte/store';
+	import { derived, Readable, Writable, writable } from 'svelte/store';
 	import { fruit$ } from './services/fruitStore';
+	import BouncyFruit from './components/BouncyFruit.svelte';
 
 	let eventsLog = [];
 	fruit$.subscribe(event => eventsLog = [event, ...eventsLog]);
@@ -17,6 +18,24 @@
 				return '❓';
 		}
 	});
+
+	// ---
+
+	const bananaCount$ = writable<number>(0);
+	const kiwiCount$ = writable<number>(0);
+	const tomatoCount$ = writable<number>(0);
+
+	createCountSubscription(bananaCount$, 'banana');
+	createCountSubscription(kiwiCount$, 'kiwi');
+	createCountSubscription(tomatoCount$, 'tomato');
+
+	function createCountSubscription(count$: Writable<number>, tomato: string): void {
+		fruit$.subscribe(fruit => {
+			if (fruit?.fruit === tomato) {
+				count$.update(c => c + 1);
+			}
+		});
+	}
 </script>
 
 <main>
@@ -28,6 +47,14 @@
 		{#each eventsLog as event}
 			<div>{JSON.stringify(event)}</div>
 		{/each}
+	</div>
+
+	<p>---</p>
+
+	<div id="bouncy_fruits">
+		<BouncyFruit fruitEmoji="🍌" fruitCount$={bananaCount$}/>
+		<BouncyFruit fruitEmoji="🥝" fruitCount$={kiwiCount$}/>
+		<BouncyFruit fruitEmoji="🍅" fruitCount$={tomatoCount$}/>
 	</div>
 </main>
 
@@ -63,5 +90,9 @@
 		height: 100px;
 		overflow-y: scroll;
 		font-size: small;
+	}
+
+	#bouncy_fruits {
+		display: inline-flex;
 	}
 </style>
