@@ -1,24 +1,9 @@
 <script lang="ts">
-	import FruitSocket from './components/FruitSocket.svelte';
-	import PotatoCounter from './components/PotatoCounter.svelte';
-	import CheeseCounter from './components/CheeseCounter.svelte';
-	import CheeseButtons from './components/CheeseButtons.svelte';
 </script>
 
 <main>
 	<h1>Svelte 🧡 RxJS</h1>
 	<h5>Maxime Orione - Renta</h5>
-
-	<PotatoCounter/>
-
-	<br/>
-
-	<CheeseButtons/>
-	<CheeseCounter/>
-
-	<br/>
-
-	<FruitSocket/>
 </main>
 
 <style>
