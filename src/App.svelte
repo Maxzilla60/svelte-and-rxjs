@@ -1,9 +1,19 @@
 <script lang="ts">
+	import { fruit$ } from './services/fruitStore';
+
+	let eventsLog = [];
+	fruit$.subscribe(event => eventsLog = [event, ...eventsLog]);
 </script>
 
 <main>
 	<h1>Svelte 🧡 RxJS</h1>
 	<h5>Maxime Orione - Renta</h5>
+
+	<div id="event_log">
+		{#each eventsLog as event}
+			<div>{JSON.stringify(event)}</div>
+		{/each}
+	</div>
 </main>
 
 <style>
@@ -31,5 +41,12 @@
 	h5 {
 		margin-top: 0;
 		font-weight: normal;
+	}
+
+	#event_log {
+		padding-left: 15px;
+		height: 100px;
+		overflow-y: scroll;
+		font-size: small;
 	}
 </style>
