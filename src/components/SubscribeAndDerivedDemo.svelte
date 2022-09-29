@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { derived, Readable } from 'svelte/store';
-	import { fruit$ } from '../services/fruitStore';
+	import { fruit$ } from '../services/fruitWritable';
 
 	let eventsLog = [];
 	fruit$.subscribe(event => eventsLog = [event, ...eventsLog]);

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Writable, writable } from 'svelte/store';
-	import { fruit$ } from '../services/fruitStore';
+	import { fruit$ } from '../services/fruitWritable';
 	import BouncyFruit from './BouncyFruit.svelte';
 
 	const bananaCount$ = writable<number>(0);
