@@ -1,24 +1,15 @@
 <script lang="ts">
 	import { fruit$ } from '../services/fruitObservable';
 	import { map, Observable, scan } from 'rxjs';
+	import type { Fruit } from '../services/shared';
+	import { mapEventToEmoji } from '../services/shared';
 
 	const eventsLog$ = fruit$.pipe(
 		scan((log, event) => [event, ...log], [])
 	);
 
 	const fruitEmojiString$: Observable<string> = fruit$.pipe(
-		map(event => {
-			switch (event?.fruit) {
-				case 'banana':
-					return '🍌';
-				case 'kiwi':
-					return '🥝';
-				case 'tomato':
-					return '🍅';
-				default:
-					return '❓';
-			}
-		})
+		map(event => mapEventToEmoji(event))
 	);
 </script>
 

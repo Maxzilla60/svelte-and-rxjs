@@ -2,6 +2,19 @@ export interface Fruit {
 	fruit: 'banana' | 'kiwi' | 'tomato' | null;
 }
 
+export function mapEventToEmoji(event: Fruit) {
+	switch (event?.fruit) {
+		case 'banana':
+			return '🍌';
+		case 'kiwi':
+			return '🥝';
+		case 'tomato':
+			return '🍅';
+		default:
+			return '❓';
+	}
+}
+
 export function initRandomFruit(updateFunction: (event) => void): void {
 	setRandomInterval(() => updateFunction({ fruit: 'tomato' }), 5500, 6000);
 	setRandomInterval(() => updateFunction({ fruit: 'kiwi' }), 3000, 5000);

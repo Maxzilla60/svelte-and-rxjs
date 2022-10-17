@@ -1,22 +1,15 @@
 <script lang="ts">
 	import { derived, Readable } from 'svelte/store';
 	import { fruit$ } from '../services/fruitWritable';
+	import { mapEventToEmoji } from '../services/shared';
 
 	let eventsLog = [];
 	fruit$.subscribe(event => eventsLog = [event, ...eventsLog]);
 
-	const fruitEmojiString$: Readable<string> = derived(fruit$, event => {
-		switch (event?.fruit) {
-			case 'banana':
-				return '🍌';
-			case 'kiwi':
-				return '🥝';
-			case 'tomato':
-				return '🍅';
-			default:
-				return '❓';
-		}
-	});
+	const fruitEmojiString$: Readable<string> = derived(
+		fruit$,
+		event => mapEventToEmoji(event)
+	);
 </script>
 
 <div>{$fruitEmojiString$}</div>
