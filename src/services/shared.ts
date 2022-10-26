@@ -1,8 +1,8 @@
-export interface Fruit {
+export interface FruitEvent {
 	fruit: 'banana' | 'kiwi' | 'tomato' | null;
 }
 
-export function mapEventToEmoji(event: Fruit) {
+export function mapEventToEmoji(event: FruitEvent) {
 	switch (event?.fruit) {
 		case 'banana':
 			return '🍌';

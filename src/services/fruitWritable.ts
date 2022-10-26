@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
-import type { Fruit } from './shared';
+import type { FruitEvent } from './shared';
 import { initRandomFruit } from './shared';
 
-export const fruit$ = writable<Fruit>();
+export const fruit$ = writable<FruitEvent>();
 
 initRandomFruit(event => fruit$.set(event));

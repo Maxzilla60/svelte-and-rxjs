@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { derived, Readable } from 'svelte/store';
 	import { fruit$ } from '../services/fruitWritable';
-	import { mapEventToEmoji } from '../services/shared';
+	import { FruitEvent, mapEventToEmoji } from '../services/shared';
 
-	let eventsLog = [];
-	fruit$.subscribe(event => eventsLog = [event, ...eventsLog]);
+	let fruitEventLog: Array<FruitEvent> = [];
+	fruit$.subscribe(event => fruitEventLog = [event, ...fruitEventLog]);
 
 	const fruitEmojiString$: Readable<string> = derived(
 		fruit$,
@@ -13,14 +13,14 @@
 </script>
 
 <div>{$fruitEmojiString$}</div>
-<div id="event_log">
-	{#each eventsLog as event}
-		<div>{JSON.stringify(event)}</div>
+<div id="fruit_log">
+	{#each fruitEventLog as fruitEvent}
+		<div>{JSON.stringify(fruitEvent)}</div>
 	{/each}
 </div>
 
 <style>
-	#event_log {
+	#fruit_log {
 		padding-left: 15px;
 		height: 100px;
 		overflow-y: scroll;

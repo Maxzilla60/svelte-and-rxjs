@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { fruit$ } from '../services/fruitObservable';
 	import { map, Observable, scan } from 'rxjs';
-	import type { Fruit } from '../services/shared';
 	import { mapEventToEmoji } from '../services/shared';
 
-	const eventsLog$ = fruit$.pipe(
+	const fruitEventsLog$ = fruit$.pipe(
 		scan((log, event) => [event, ...log], [])
 	);
 
@@ -14,14 +13,14 @@
 </script>
 
 <div>{$fruitEmojiString$}</div>
-<div id="event_log">
-	{#each $eventsLog$ as event}
-		<div>{JSON.stringify(event)}</div>
+<div id="fruit_log">
+	{#each $fruitEventsLog$ as fruitEvent}
+		<div>{JSON.stringify(fruitEvent)}</div>
 	{/each}
 </div>
 
 <style>
-	#event_log {
+	#fruit_log {
 		padding-left: 15px;
 		height: 100px;
 		overflow-y: scroll;

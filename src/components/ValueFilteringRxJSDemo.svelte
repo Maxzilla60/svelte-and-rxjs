@@ -2,23 +2,23 @@
 	import { fruit$ } from '../services/fruitObservable';
 	import BouncyFruit from './BouncyFruit.svelte';
 	import { filter, Observable } from 'rxjs';
-	import type { Fruit } from '../services/shared';
+	import type { FruitEvent } from '../services/shared';
 
-	const bananaCount$: Observable<Fruit> = fruit$.pipe(
+	const banana$: Observable<FruitEvent> = fruit$.pipe(
 		filter(event => event?.fruit === 'banana'),
 	);
-	const kiwiCount$: Observable<Fruit> = fruit$.pipe(
+	const kiwi$: Observable<FruitEvent> = fruit$.pipe(
 		filter(event => event?.fruit === 'kiwi'),
 	);
-	const tomatoCount$: Observable<Fruit> = fruit$.pipe(
+	const tomato$: Observable<FruitEvent> = fruit$.pipe(
 		filter(event => event?.fruit === 'tomato'),
 	);
 </script>
 
 <div id="bouncy_fruits">
-	<BouncyFruit fruitEmoji="🍌" fruitCount$={bananaCount$}/>
-	<BouncyFruit fruitEmoji="🥝" fruitCount$={kiwiCount$}/>
-	<BouncyFruit fruitEmoji="🍅" fruitCount$={tomatoCount$}/>
+	<BouncyFruit fruitEmoji="🍌" fruitCount$={banana$}/>
+	<BouncyFruit fruitEmoji="🥝" fruitCount$={kiwi$}/>
+	<BouncyFruit fruitEmoji="🍅" fruitCount$={tomato$}/>
 </div>
 
 <style>

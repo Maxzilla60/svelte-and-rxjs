@@ -11,9 +11,9 @@
 	createCountSubscription(kiwiCount$, 'kiwi');
 	createCountSubscription(tomatoCount$, 'tomato');
 
-	function createCountSubscription(count$: Writable<number>, tomato: string): void {
-		fruit$.subscribe(fruit => {
-			if (fruit?.fruit === tomato) {
+	function createCountSubscription(count$: Writable<number>, fruitType: string): void {
+		fruit$.subscribe(event => {
+			if (event?.fruit === fruitType) {
 				count$.update(c => c + 1);
 			}
 		});
