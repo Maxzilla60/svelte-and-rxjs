@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { fruit$ } from '../services/fruitObservable';
 	import { map, Observable, scan } from 'rxjs';
-	import { mapEventToEmoji } from '../services/shared';
+	import { FruitEvent, mapEventToEmoji } from '../services/shared';
 
 	const fruitEmojiString$: Observable<string> = fruit$.pipe(
 		map(event => mapEventToEmoji(event))
 	);
 
-	const fruitEventsLog$ = fruit$.pipe(
+	const fruitEventsLog$: Observable<Array<FruitEvent>> = fruit$.pipe(
 		scan((log, event) => [event, ...log], [])
 	);
 </script>

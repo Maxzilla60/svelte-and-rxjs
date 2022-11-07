@@ -2,7 +2,7 @@ export interface FruitEvent {
 	fruit: 'banana' | 'kiwi' | 'tomato' | null;
 }
 
-export function mapEventToEmoji(event: FruitEvent) {
+export function mapEventToEmoji(event: FruitEvent): string {
 	switch (event?.fruit) {
 		case 'banana':
 			return '🍌';
