@@ -3,12 +3,12 @@
 	import { map, Observable, scan } from 'rxjs';
 	import { mapEventToEmoji } from '../services/shared';
 
-	const fruitEventsLog$ = fruit$.pipe(
-		scan((log, event) => [event, ...log], [])
-	);
-
 	const fruitEmojiString$: Observable<string> = fruit$.pipe(
 		map(event => mapEventToEmoji(event))
+	);
+
+	const fruitEventsLog$ = fruit$.pipe(
+		scan((log, event) => [event, ...log], [])
 	);
 </script>
 
