@@ -20,14 +20,21 @@
 	}
 </script>
 
-<div id="bouncy_fruits">
+<div class="bouncy_fruit">
 	<BouncyFruit fruitEmoji="🍌" fruitCount$={bananaCount$}/>
+	<b>{$bananaCount$}</b>
+</div>
+<div class="bouncy_fruit">
 	<BouncyFruit fruitEmoji="🥝" fruitCount$={kiwiCount$}/>
+	<b>{$kiwiCount$}</b>
+</div>
+<div class="bouncy_fruit">
 	<BouncyFruit fruitEmoji="🍅" fruitCount$={tomatoCount$}/>
+	<b>{$tomatoCount$}</b>
 </div>
 
 <style>
-	#bouncy_fruits {
-		display: inline-flex;
+	.bouncy_fruit {
+		display: inline-block;
 	}
 </style>
