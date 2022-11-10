@@ -4,11 +4,11 @@
 	import { FruitEvent, mapEventToEmoji } from '../services/shared';
 
 	const fruitEmojiString$: Observable<string> = fruit$.pipe(
-		map(event => mapEventToEmoji(event))
+		map(event => mapEventToEmoji(event)),
 	);
 
 	const fruitEventsLog$: Observable<Array<FruitEvent>> = fruit$.pipe(
-		scan((log, event) => [event, ...log], [])
+		scan((log, event) => [event, ...log], []),
 	);
 </script>
 
