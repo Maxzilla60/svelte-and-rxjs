@@ -6,5 +6,5 @@
 </script>
 
 {#key $fruitCount$}
-	<div class="fruit animate__animated animate__bounce animate__faster">{fruitEmoji}</div>
+	<div class="animate__animated animate__bounce animate__faster">{fruitEmoji}</div>
 {/key}
